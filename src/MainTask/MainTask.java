@@ -22,6 +22,7 @@ public class MainTask {
         while (sc.hasNext()){
             arrayText += sc.nextLine().trim() + " ";
         }
+        sc.close();
         String[] array = arrayText.split(" ");  //Аргументы переносятся в массив при помощи разделителя " "
         for (int i = array.length-1; i >= 0 ; i--) { //Выводим на печать массив
             System.out.println(array[i]);
