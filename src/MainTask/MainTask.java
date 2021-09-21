@@ -1,5 +1,6 @@
 package MainTask;
 
+import javax.sound.midi.Soundbank;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class MainTask {
        // ArgumentsRevers();
        // RandomNumber();
        //SumNumbers();
+       //Month();
     }
     //1. Приветствовать любого пользователя при вводе его имени через командную строку.
     public static void HelloName(String name){
@@ -57,5 +59,50 @@ public class MainTask {
         }
         System.out.println(sumNumber);
     }
-//5.Ввести число от 1 до 12. Вывести на консоль название месяца, соответствующего данному числу. Осуществить проверку корректности ввода чисел.
+    //5.Ввести число от 1 до 12. Вывести на консоль название месяца, соответствующего данному числу.
+    // Осуществить проверку корректности ввода чисел.
+    public static void Month(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите номер месяца от 1 до 12:");
+        switch (sc.nextInt()){
+            case 1:
+                System.out.println("Январь");
+                break;
+            case 2:
+                System.out.println("Февраль");
+                break;
+            case 3:
+                System.out.println("Март");
+                break;
+            case 4:
+                System.out.println("Апрель");
+                break;
+            case 5:
+                System.out.println("Май");
+                break;
+            case 6:
+                System.out.println("Июнь");
+                break;
+            case 7:
+                System.out.println("Июль");
+                break;
+            case 8:
+                System.out.println("Август");
+                break;
+            case 9:
+                System.out.println("Сентябрь");
+                break;
+            case 10:
+                System.out.println("Октябрь");
+                break;
+            case 11:
+                System.out.println("Ноябрь");
+                break;
+            case 12:
+                System.out.println("Декабрь");
+                break;
+            default:
+                System.out.println("Не верный ввод");
+        }
+    }
 }
