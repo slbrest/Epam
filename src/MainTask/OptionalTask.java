@@ -75,6 +75,7 @@ public class OptionalTask {
         }
         //методы minDiffNum и diffNumLength для 4-й задачи
         public static void minDiffNum(int[] arr) {
+        //стандартный поискминимального числа, если длина HashSet меньше изначального минимумма, то HashSet обновляет минимум
             int min = diffNumLength(arr[0]);
             int minElem = arr[0];
 
@@ -88,6 +89,8 @@ public class OptionalTask {
         }
         public static int diffNumLength(int x){
             HashSet<Integer> number = new HashSet<>();
+            //перебираем число по фифрам и вносим в HashSet, повторяющиеся эелементы в HashSet не вносятся
+            //поэтому если есть повторения цифр в числе, то они не запишутся тем самым уменьшат длину числа
             while (x > 0) {
                 number.add(x % 10);
                 x /= 10;
