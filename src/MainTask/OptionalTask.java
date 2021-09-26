@@ -36,6 +36,11 @@ public class OptionalTask {
         //4. Найти число, в котором количество различных цифр минимально. Если таких чисел несколько, найти первое из них.
         minDiffNum(numbersTemp);
         System.out.println("***************************************\n");
+        //5. Найти количество чисел, содержащих только четные цифры, а среди оставшихся — количество чисел с равным числом четных и нечетных цифр.
+        even(numbersTemp);
+        System.out.println("***************************************\n");
+        //6. Найти число, цифры в котором идут в строгом порядке возрастания. Если таких чисел несколько, найти первое из них.
+        System.out.println("***************************************\n");
         }
         public static void shortLong(ArrayList<Integer> list){
             Collections.sort(list);
@@ -75,7 +80,7 @@ public class OptionalTask {
         }
         //методы minDiffNum и diffNumLength для 4-й задачи
         public static void minDiffNum(int[] arr) {
-        //стандартный поискминимального числа, если длина HashSet меньше изначального минимумма, то HashSet обновляет минимум
+        //стандартный поиск минимального числа, если длина HashSet меньше изначального минимумма, то HashSet обновляет минимум
             int min = diffNumLength(arr[0]);
             int minElem = arr[0];
 
@@ -97,10 +102,46 @@ public class OptionalTask {
             }
             return number.size();
         }
+
+        //методы even и evenOdd для 5-й задачи
+        public static void even(int[] arr){
+        int evenNumbers = 0;
+        int evenOdd = 0;
+
+        int start = 0;
+        //в методе evenOdd едет переборка числа на цифры и вычесление четные или не четные находят в ней цифры
+        //Если метод evenOdd возвращает 1, значит все цифры в числе четные, если возвращает 2 значит на половину четные и на половину нечетные.
+            for (int i = 0; i < arr.length; i++) {
+                start = evenOdd(arr[i]);
+                if (start == 1) evenNumbers++;
+                if (start == 2) evenOdd++;
+            }
+            System.out.println("Количество чисел в которых только четные числа " + evenNumbers);
+            System.out.println("Количество с равным числом четных и нечетных цифр " + evenOdd);
+        }
+        public static int evenOdd(int x){
+        //перебираем каждое число на цифры и при помощи деления на остаток проверяем их на четность.
+        int z = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (x > 0) {
+            list.add(x % 10);
+            x /= 10;
+        }
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) % 2 == 0) z++;
+            }
+            if (z == list.size())
+                return 1;
+            if (z == list.size() /2 )
+                return 2;
+            else
+                return 0;
+    }
+
+
+
 }
     /*
-5.     Найти количество чисел, содержащих только четные цифры, а среди оставшихся — количество чисел с равным числом четных и нечетных цифр.
-
 6.     Найти число, цифры в котором идут в строгом порядке возрастания. Если таких чисел несколько, найти первое из них.
 
 7.     Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них.
