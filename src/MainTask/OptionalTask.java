@@ -40,6 +40,11 @@ public class OptionalTask {
         even(numbersTemp);
         System.out.println("***************************************\n");
         //6. Найти число, цифры в котором идут в строгом порядке возрастания. Если таких чисел несколько, найти первое из них.
+        //Немного не понятно условие под строгим порядком подразумевается возрастание на +1,? или просто возрастание в любом порядке?
+        ascendingOrder(numbersTemp);
+        System.out.println("***************************************\n");
+        //7. Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них.
+        diffAllNumb(numbersTemp);
         System.out.println("***************************************\n");
         }
         public static void shortLong(ArrayList<Integer> list){
@@ -54,6 +59,7 @@ public class OptionalTask {
         public static void sortPrint(ArrayList<Integer> list){
             Collections.sort(list);
             list.forEach(System.out::println);
+            System.out.println("***");
             Collections.reverse(list);
             list.forEach(System.out::println);
         }
@@ -138,12 +144,67 @@ public class OptionalTask {
                 return 0;
     }
 
+        //методы ascendingOrder и ascendingOrderNumbers для 6-й задачи
+        public static void ascendingOrder(int[] arr){
 
+            int start = 0;
+            //в методе evenOdd едет переборка числа на цифры и вычесление четные или не четные находят в ней цифры
+            //Если метод evenOdd возвращает 1, значит все цифры в числе четные, если возвращает 2 значит на половину четные и на половину нечетные.
+            for (int i = 0; i < arr.length; i++) {
+                start = ascendingOrderNumbers(arr[i]);
+                if (start == 1)
+                    System.out.println(arr[i]);
+            }
 
+        }
+        public static int ascendingOrderNumbers(int x){
+        //перебираем каждое число на цифры.
+        int z = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (x > 0) {
+            list.add(x % 10);
+            x /= 10;
+        }
+        for (int i = list.size()-1; i >= 1; i--) {
+            //Если под строгим возрастанием не подразумевалось увеличение на 1, то изменить условие на больше.
+            if ((list.get(i) + 1) == list.get(i-1)) z++;
+        }
+        if (z == list.size()-1)
+            return 1;
+        else
+            return 0;
+    }
+        //методы diffAllNumb и allNumbers для 7-й задачи
+        public static void diffAllNumb(int[] arr){
+
+        int start = 0;
+        //в методе evenOdd едет переборка числа на цифры и вычесление четные или не четные находят в ней цифры
+        //Если метод evenOdd возвращает 1, значит все цифры в числе четные, если возвращает 2 значит на половину четные и на половину нечетные.
+        for (int i = 0; i < arr.length; i++) {
+            start = allNumbers(arr[i]);
+            if (start == 1)
+                System.out.println(arr[i]);
+        }
+
+    }
+        public static int allNumbers(int x){
+        //перебираем каждое число на цифры.
+        int z = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (x > 0) {
+            list.add(x % 10);
+            x /= 10;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 1; j < list.size(); j++) {
+                if (list.get(i) != list.get(j)) z++;
+            }
+        }
+            System.out.println(z);
+        if (z == (list.size()-1) * (list.size()-1))
+            return 1;
+        else
+            return 0;
+    }
 }
-    /*
-6.     Найти число, цифры в котором идут в строгом порядке возрастания. Если таких чисел несколько, найти первое из них.
-
-7.     Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них.
-     */
 
