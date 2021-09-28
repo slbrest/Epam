@@ -14,7 +14,7 @@ public class OptionalTask2 {
         int line = Integer.parseInt(reader.readLine());
         int column  = Integer.parseInt(reader.readLine());
         reader.close();
-       // int[][] arr = {{-2, -1, 1, 2, 3}, {1, 0, -1, 2, 3}};
+       // int[][] arr = {{-1,2,-3,-4,5}, {1,-2,-3,-4,5}, {1,2,-3,4,5}, {-1,2,-3,4,5}, {1,-2,-3,4,5}};
         int[][] arr = new int[line][column];
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
@@ -25,6 +25,9 @@ public class OptionalTask2 {
 
         //2.Найти и вывести наибольшее число возрастающих (убывающих) элементов матрицы, идущих подряд.
         moreLess(arr);
+        System.out.println("****************************************\n");
+        //3.Найти сумму элементов матрицы, расположенных между первым и вторым положительными элементами каждой строки
+        positiveSum(arr);
         System.out.println("****************************************\n");
         //1. Упорядочить строки (столбцы) матрицы в порядке возрастания значений элементов k-го столбца (строки).
         sortArray(arr);
@@ -89,10 +92,32 @@ public class OptionalTask2 {
         System.out.println(Arrays.toString(arrLess) + " Длина последовательности: " + (min + 1));
     }
 
+    public static void positiveSum (int[][] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+            int sum = 0;
+            int flag = 0;
+            for (int j = 0; j < arr[i].length - 1; j++) {
+                if (arr[i][j] >= 0) {
+                    flag++;
+                }
+                if(arr[i][j + 1] >= 0 && flag == 1){
+                    flag++;
+                }
+                if (arr[i][j] >= 0 && flag < 2){
+                    sum += arr[i][j + 1];
+                }
+                if (arr[i][j] < 0 && flag == 1){
+                    sum += arr[i][j + 1];
+                }
+            }
+        System.out.println("Строка " + (i + 1));
+            System.out.println(Arrays.toString(arr[i]));
+        System.out.println(sum != 0 ? sum : "-");
+        }
+    }
+
     /*
-
-3.     Найти сумму элементов матрицы, расположенных между первым и вторым положительными элементами каждой строки
-
 4.     Найти максимальный элемент в матрице и удалить из матрицы все строки и столбцы, его содержащие
 
      */
