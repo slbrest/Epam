@@ -3,8 +3,6 @@ package MainTask;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -15,7 +13,6 @@ public class OptionalTask2 {
         int line = Integer.parseInt(reader.readLine());
         int column  = Integer.parseInt(reader.readLine());
         reader.close();
-       // int[][] arr = {{-1,2,-3,-4,5}, {1,-2,7,-4,5}, {1,2,-3,4,5}, {-1,2,-3,4,5}, {1,-2,-3,4,5}};
         int[][] arr = new int[line][column];
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
