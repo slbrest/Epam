@@ -1,5 +1,7 @@
 package BasicsOfSoftwareCodeDevelopment;
 
+import java.math.BigInteger;
+
 public class Tasks {
     public static void main(String args[]) {
         System.out.println("1. Найти значение функции z =( ( a - 3 ) * b / 2 ) + c");
@@ -24,6 +26,14 @@ public class Tasks {
         straight(1, 1, 2, 2, 3, 3);
         System.out.println("\n10. Заданы размеры прямоугольного отверстия A, B. Пройдет ли в него кирпичь с размерами x, y, z.");
         brick(5, 4);
+        System.out.println("\n12. Ввести положительное число и сложиь все числа от 1 до введеного числа (включительно).");
+        sum(3);
+        System.out.println("\n13. вычислить значение функции на отрезке a b шагом h");
+        funLine(3, 10, 2);
+        System.out.println("\n14. вычислить сумму квадратов первых 100 чисел.");
+        sumSquare(100);
+        System.out.println("\n15. составить программу нахождения произведения квадратов первых двухсот чисел");
+        multiplicationSquare(200);
     }
 
     static void func(double a, double b, double c) {
@@ -106,6 +116,44 @@ public class Tasks {
         }
         else
             System.out.println("Не пройдет");
+    }
+
+    static void sum(int x) {
+            int y = 1;
+        for (int i = 1; i <= x; i++) {
+            y = y + i;
+        }
+
+        System.out.println(y);
+    }
+
+    static void funLine(double start, double end, double step) {
+        double x, y;
+        for(x = start; x <= end; x += step){
+            if(x <= 2){
+                y = -x;
+                System.out.println(y);
+            } else{
+                y = x;
+                System.out.println(y);
+            }
+        }
+    }
+
+    static void sumSquare (int number){
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += Math.pow(i, 2);
+        }
+        System.out.println(sum);
+    }
+
+    static void multiplicationSquare (int number){
+        BigInteger multip = BigInteger.valueOf(1);
+        for(int i = 2; i <= number; i++) {
+            multip = multip.multiply(BigInteger.valueOf((long) i * i));
+        }
+        System.out.println(multip);
     }
 
 }
