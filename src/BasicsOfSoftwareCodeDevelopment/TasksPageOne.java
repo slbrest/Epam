@@ -4,9 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.util.HashSet;
 import java.util.Random;
 
-public class Tasks {
+public class TasksPageOne {
     public static void main(String args[]) throws IOException {
         System.out.println("1. Найти значение функции z =( ( a - 3 ) * b / 2 ) + c");
         func(11, 22, 33);
@@ -207,12 +208,36 @@ public class Tasks {
     }
 
     static void twoNumbers() {
-       Random rnd = new Random();
-       int one = rnd.nextInt();
-       int two = rnd.nextInt();
+        Random rnd = new Random();
+        int one = rnd.nextInt(Integer.MAX_VALUE);
+        int two = rnd.nextInt(Integer.MAX_VALUE);
+        String strOne = Integer.toString(one);
+        String strTwo = Integer.toString(two);
 
-        System.out.println(one);
-        System.out.println(two);
+        int[] oneArr = new int[strOne.length()];
+        int[] twoArr = new int[strTwo.length()];
+
+        for (int i = strOne.length() - 1; i >= 0; i--) {
+            oneArr[i] = one % 10;
+            one /= 10;
+        }
+        for (int i = strTwo.length() - 1; i >= 0; i--) {
+            twoArr[i] = two % 10;
+            two /= 10;
+        }
+        System.out.println("Числа который нам данны:");
+        System.out.println(strOne);
+        System.out.println(strTwo);
+        HashSet hashSet = new HashSet();
+        System.out.println("Числа которые есть в двух разныч числах: ");
+        for (int i = 0; i < oneArr.length; i++) {
+            for (int j = 0; j < twoArr.length; j++) {
+                if (oneArr[i] == twoArr[j]){
+                    hashSet.add(oneArr[i]);
+                }
+            }
+        }
+        System.out.println(hashSet);
 
     }
 
